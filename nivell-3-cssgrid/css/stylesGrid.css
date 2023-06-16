@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/*Grid elements container*/
+
+header {
+    grid-area: header;
+}
+
+main {
+    grid-area: main;
+}
+
+footer {
+    grid-area: footer;
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-areas:
+        "header header header"
+        "main main main"
+        "footer footer footer";
+}
+
+a {
+    text-decoration: none;
+    color: rgb(70, 70, 70);
+}
+
+a:hover {
+    color: #FC7865;
+}
+
+/*INICIO DEL HEADER*/
+.header {
+    padding: 0px;
+    height: 250px;
+    /*Con background: url() añadimos la imagen en el header*/
+    background: url(./images/header.jpg);
+    /*Inicio contenemos la imagen dentro del header*/
+    background-position: center;
+    background-attachment: contain;
+    background-size: cover;
+    /*Fin de la contención de la imagen*/
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+}
+
+
+.menu {
+    grid-area: menu;
+    display: grid;
+    grid-template-areas:
+        "logo nav rrss";
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+
+.logo {
+    grid-area: logo;
+    align-self: center;
+    animation: logoAppears 2s;
+}
+
+.nav {
+    /*grid-area: nav;
+    align-self: center;*/
+    display:flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.nav a {
+    margin: 20px;
+    letter-spacing: 1px;
+    padding: 0 10px;
+}
+
+.rrss {
+    grid-area: rrss;
+    align-self: center;
+}
+
+.rrss a {
+    display: inline-block;
+    margin: 2px;
+    letter-spacing: 1px;
+
+}
+
+
+.texto-principal {
+    grid-area: texto-principal;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    align-self: center;
+    background: rgba(0, 0, 0, .1);
+    height: 80px;
+    width: 80%;
+    color: #FC7865;
+    font-family: 'IM Fell Double Pica';
+    font-size: 20px;
+    text-align: center;
+    animation: tituloAppears 3s;
+}
+
+/*FINAL DEL HEADER*/
+
+/*INICIO DEL MAIN*/
+
+.main {
+    display: grid;
+    grid-gap: 10px;
+    background: white;
+    grid-template-areas:
+        "section aside";
+    grid-template-columns: 3fr 1fr;
+}
+
+/*SECTION*/
+
+.section {
+    grid-area: section;
+    display: grid;
+    grid-gap: 10px;
+    padding: 10px;
+    background: #D8D7D7;
+    grid-template-areas:
+        "cultura gastronomia"
+        "turismo vida-nocturna"
+        "sergio sergio";
+}
+
+/*Nombramos grid id de articles y publicidad*/
+
+#cultura {
+    grid-area: cultura;
+}
+
+#gastronomia {
+    grid-area: gastronomia;
+}
+
+#turismo {
+    grid-area: turismo;
+}
+
+#vida-nocturna {
+    grid-area: vida-nocturna;
+}
+
+#sergio {
+    grid-area: sergio;
+}
+
+
+
+.article {
+    padding: 10px;
+    background: #F4F0F1;
+    flex: 1 1 40%;
+}
+
+.article img {
+    padding: 0px;
+    height: 230px;
+    width: 100%;
+}
+
+
+.article h3 {
+    background-color: #F08080;
+    color: white;
+    text-align: start;
+}
+
+.article p {
+    column-count: 2;
+}
+
+.publicidad {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.aside {
+    grid-area: aside;
+    background: #D8D7D7;
+    text-align: center;
+    font-size: 14px;
+}
+
+.aside h4 {
+    margin: 3.5em;
+}
+
+.aside p {
+    margin: 1em;
+}
+
+/*FIN DEL MAIN*/
+
+/*INICIO DEL FOOTER*/
+
+.footer {
+    background-color: #D8D7D7;
+    height: 30px;
+}
+
+.footer p {
+    background-color: #F5F1F1;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 30px;
+}
+
+/*FINAL DEL FOOTER*/
+
+
+
+/*INICIO MEDIA QUERIES*/
+
+@media all and (max-width: 800px) {
+    .main {
+        background-color: yellow;
+        grid-template-areas:
+            "section"
+            "aside";
+    }
+
+
+}
+
+@media all and (max-width: 600px) {
+    @media all and (max-width: 600px) {
+        .container {
+            grid-template-areas:
+                "header"
+                "main"
+                "footer";
+        }
+
+        .header {
+            height: auto;
+        }
+
+        .menu {
+            grid-template-areas:
+                "logo"
+                "nav"
+                "rrss";
+            grid-template-columns: 1fr;
+        }
+
+        .nav{
+            flex-direction: column no wrap;
+        }
+
+        .main {
+            grid-template-areas:
+                "section"
+                "aside";
+        }
+
+        .section{
+            grid-template-areas: 
+            "cultura"
+            "gastronomia"
+            "turismo"
+            "vida-nocturna"
+            "sergio"
+            ;
+        }
+    }
+
+    .aside {
+        background-color: whitesmoke;
+    }
+}
+
+/*FINAL MEDIAQUERIES*/
+
+/*INICIO KEYFRAMES*/
+
+@keyframes logoAppears {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes tituloAppears {
+    from {
+        transform: translateX(-150%);
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+
+/*FINAL KEYFRAMES*/
